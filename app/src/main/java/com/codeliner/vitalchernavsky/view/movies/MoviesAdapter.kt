@@ -56,6 +56,6 @@ class MoviesAdapter : ListAdapter<Item, MoviesAdapter.MyViewHolder>(callback) {
 
     } // onBindViewHolder
 
-
+//masterr
 
 } //в PagingDataAdapter уже зашит список, не нужно создавать и обновлять. Обновляется через submitData
