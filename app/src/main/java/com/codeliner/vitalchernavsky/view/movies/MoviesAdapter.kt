@@ -21,7 +21,7 @@ val callback = object : DiffUtil.ItemCallback<Item>() {
         return oldItem == newItem
     } // есть ли различия внутри элемента
 
-} // callback
+} // ItemCallback
 
 
 class MoviesAdapter : ListAdapter<Item, MoviesAdapter.MyViewHolder>(callback) {
@@ -45,7 +45,7 @@ class MoviesAdapter : ListAdapter<Item, MoviesAdapter.MyViewHolder>(callback) {
         val context = holder.itemView.context
 
         holder.itemView.setOnClickListener {
-            listener?.invoke(item)
+            listener?.invoke(item) //листенер может быть нулл
         }
 
         Glide.with(context)
@@ -56,6 +56,6 @@ class MoviesAdapter : ListAdapter<Item, MoviesAdapter.MyViewHolder>(callback) {
 
     } // onBindViewHolder
 
-//masterr
+} // в PagingDataAdapter зашит список, не нужно создавать и обновлять. Обновляется через submitData
 
-} //в PagingDataAdapter уже зашит список, не нужно создавать и обновлять. Обновляется через submitData
+// TODO: поменять ветку masterr на master
