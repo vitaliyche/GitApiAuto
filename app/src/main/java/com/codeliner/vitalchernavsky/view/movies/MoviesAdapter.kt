@@ -45,7 +45,7 @@ class MoviesAdapter : ListAdapter<Item, MoviesAdapter.MyViewHolder>(callback) {
         val context = holder.itemView.context
 
         holder.itemView.setOnClickListener {
-            listener?.invoke(item) //листенер может быть нулл
+            listener?.invoke(item)
         }
 
         Glide.with(context)
