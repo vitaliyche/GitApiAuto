@@ -1,9 +1,7 @@
 package com.codeliner.vitalchernavsky.view.movies
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -23,8 +21,8 @@ class MoviesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         moviesBinding = FragmentMoviesBinding.inflate(layoutInflater, container, false)
+
         val viewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
         recyclerView = binding.moviesRv
         adapter = MoviesAdapter()
@@ -49,6 +47,7 @@ class MoviesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         init()
     }
 

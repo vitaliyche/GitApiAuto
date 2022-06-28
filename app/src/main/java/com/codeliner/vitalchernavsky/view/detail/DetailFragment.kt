@@ -19,28 +19,36 @@ class DetailFragment : Fragment() {
     private var description: TextView? = null
     private var image: ImageView? = null
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_detail, container, false)
+
         name = view.tv_name_detail
         description = view.tv_description_detail
         image = view.img_detail
+
+
         return view
-    }
+
+    } // onCreateView
+
 
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val model = requireArguments().getSerializable("model") as Item
         name?.text = model.name
-        description?.text = model.description
+        description?.text = model.git_url
 
         Glide.with(requireContext())
             .load(model.owner.avatar_url)
             .fitCenter()
             .placeholder(R.drawable.ic_launcher_foreground)
             .into(image!!)
-    }
+
+    } // onViewCreated
 }

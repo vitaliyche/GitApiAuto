@@ -12,24 +12,21 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 class MoviesViewModel : ViewModel() {
+
     private val repository = RetrofitRepository()
     val myMovies: MutableLiveData<GitHubSearch> = MutableLiveData()
+
     val pagingMoviesFlow = repository.getPagingMoviesFlow()
-        .stateIn(
-            viewModelScope,
-            SharingStarted.Lazily,
-            PagingData.empty()
-        ) //когда нет данных, класть эмпти
+        .stateIn(viewModelScope, SharingStarted.Lazily, PagingData.empty()) // empty - когда нет данных
+
 
     fun getMovies() {
+
         viewModelScope.launch {
-            runCatching {
-                myMovies.value = repository.getMovies()
-            }
-                .onFailure {
-                    Log.e("ERROR", it.message.toString())
-                }
+            runCatching { myMovies.value = repository.getMovies() }
+                .onFailure { Log.e("ERROR", it.message.toString()) }
         }
-    }
+
+    } // fun
 
 }
